@@ -1,3 +1,4 @@
+/*global isGameOver, whoWon, playTurn, restart */
 /* Tic-Tac-Tester.js
 
 This script will test the game logic of your tic tac toe game. To use it you will need to include it in your html file after you main tic-tac-toe script. You will need to declare the following functions in the global scope:
@@ -39,9 +40,9 @@ simulateGame('P1 Bottom Row Victory', [6, 0, 7, 4, 8], playerOne)
 simulateGame('P2 Left Col Victory', [1, 0, 4, 3, 5, 6], playerTwo)
 simulateGame('P2 Middle Col Victory', [0, 1, 2, 4, 3, 7], playerTwo)
 simulateGame('P2 Right Col Victory', [0, 2, 1, 5, 3, 8], playerTwo)
-simulateGame('P1 TL to BR Victory', [0, 2, 4, 5, 7], playerOne)
+simulateGame('P1 TL to BR Victory', [0, 2, 4, 5, 8], playerOne)
 simulateGame('P2 TR to BL Victory', [0, 2, 1, 4, 3, 6], playerTwo)
-simulateGame('Draw Game', [0, 1, 2, 3, 4, 5, 6, 8, 7], playerDraw)
+simulateGame('Draw Game', [0, 1, 2, 3, 5, 4, 6, 8, 7], playerDraw)
 
 console.log('==================================')
 console.log(testsRun + ' TESTS RUN')
@@ -54,8 +55,8 @@ function simulateGame (testTitle, moves, winner) {
   console.log('-------------------------------')
   restart()
 
-  expect('gameOver should return false at start of game', isGameOver, false)
-  expect('whoWon should return 0 at start of the game', whoWon, 0)
+  expect('gameOver should return false at start of game', isGameOver(), false)
+  expect('whoWon should return 0 at start of the game', whoWon(), 0)
 
   for (var i = 0; i < moves.length; ++i) {
     expect('playTurn should allow move to ' + moves[i], playTurn(moves[i]), true)
@@ -64,7 +65,7 @@ function simulateGame (testTitle, moves, winner) {
 
   expect('playTurn should not allow move after gameover', playTurn(moves[0]), false)
 
-  expect('whoWon should return ' + winner + ' at end of the game', whoWon, winner)
+  expect('whoWon should return ' + winner + ' at end of the game', whoWon(), winner)
 }
 
 function expect (expectationMessage, testFunctionResult, returnValue) {
@@ -74,6 +75,6 @@ function expect (expectationMessage, testFunctionResult, returnValue) {
     if (showPasses) console.log('%c[PASS] ' + expectationMessage, 'color: green')
   } else {
     ++testsFailed
-    console.log('%c[FAIL] ' + expectationMessage, 'color: red')
+    console.log('%c[FAIL] ' + expectationMessage + ' but it was ' + testFunctionResult, 'color: red')
   }
 }
