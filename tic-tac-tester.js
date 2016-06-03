@@ -56,6 +56,8 @@ console.log('==================================')
 console.log(testsRun + ' TESTS RUN')
 if (testsPassed > 0) console.log('%c>' + testsPassed + ' TESTS PASSED', 'color: green')
 if (testsFailed > 0) console.log('%c>' + testsFailed + ' TESTS FAILED', 'color: red')
+// restart the game so it can run normally
+restart()
 
 function simulateGame (testTitle, moves, winner) {
   console.log('-------------------------------')
