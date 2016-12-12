@@ -72,4 +72,6 @@ function expect (expectationMessage, testFunctionResult, returnValue) {
   }
 }
 
-console.log(printResult(6))
+ for (var i = 0; i < previousGame.length; i++) {
+ printResult(i)
+ }

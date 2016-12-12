@@ -3,14 +3,14 @@ var grid = [
   0, 0, 0,
   0, 0, 0
 ]
-
 var currentPlayer = 1
 var tilesTaken = 0
 var previousGame = []
 var round = {}
 var move = 1
+
 function playTurn (index) {
-  if (grid[index] === 0) {
+  if (isGameOver() === false && grid[index] === 0) {
     grid[index] = currentPlayer
     round['move-' + move] = index
     round['move-' + move + '-Player'] = currentPlayer
@@ -52,8 +52,9 @@ function whoWon () {
   } else if (tilesTaken === 9 && winner === 0) {
     winner = 3
   }
-  round['winner'] = winner
-  previousGame.push(round)
+  if (winner > 0) {
+    round['winner'] = winner
+  }
   return winner
 }
 
@@ -65,13 +66,23 @@ function restart () {
   ]
   currentPlayer = 1
   tilesTaken = 0
+  if (Object.keys(round).length > 0) {
+    previousGame.push(round)
+  }
   round = {}
   move = 1
 }
 
 function printResult (gameNumber) {
-  console.log('------------Game ', gameNumber, '--------------')
-  for (var key in previousGame[gameNumber]) {
-    console.log(key.toUpperCase(), ':  ', previousGame[gameNumber][key])
+  if (gameNumber < previousGame.length) {
+    console.log('------------Game ', gameNumber, '--------------')
+    for (var key in previousGame[gameNumber]) {
+      console.log(key.toUpperCase(), ':  ', previousGame[gameNumber][key])
+    }
+    console.log('----------------------------------')
+  } else {
+    (
+    console.log('-----------This game is still progressing---------------')
+  )
   }
 }

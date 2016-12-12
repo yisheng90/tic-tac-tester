@@ -3,12 +3,12 @@ var grid = [
   0, 0, 0,
   0, 0, 0
 ]
-
 var currentPlayer = 1
 var tilesTaken = 0
 
+
 function playTurn (index) {
-  if (grid[index] === 0) {
+  if (isGameOver() === false && grid[index] === 0) {
     grid[index] = currentPlayer
     currentPlayer = 3 - currentPlayer
     tilesTaken += 1
@@ -28,35 +28,23 @@ function isGameOver () {
 
 function whoWon () {
   var winner = 0
-  var checkDraw = 0
-
-  if (grid[0] === grid[1] && grid[0] === grid[2] && grid[0] > 0) {
+  if (grid[0] === grid[1] && grid[0] === grid[2] && grid[0] !== 0) {
     winner = 3 - currentPlayer
-  }
-
-  if (grid[3] === grid[4] && grid[3] === grid[5] && grid[3] !== 0) {
+  } else if (grid[3] === grid[4] && grid[3] === grid[5] && grid[3] !== 0) {
     winner = 3 - currentPlayer
-  }
-  if (grid[6] === grid[7] && grid[6] === grid[8] && grid[6] !== 0) {
+  } else if (grid[6] === grid[7] && grid[6] === grid[8] && grid[6] !== 0) {
     winner = 3 - currentPlayer
-  }
-  if (grid[0] === grid[3] && grid[0] === grid[6] && grid[0] !== 0) {
+  } else if (grid[0] === grid[3] && grid[0] === grid[6] && grid[0] !== 0) {
     winner = 3 - currentPlayer
-  }
-  if (grid[1] === grid[4] && grid[1] === grid[7] && grid[1] !== 0) {
+  } else if (grid[1] === grid[4] && grid[1] === grid[7] && grid[1] !== 0) {
     winner = 3 - currentPlayer
-  }
-  if (grid[2] === grid[5] && grid[2] === grid[8] && grid[2] !== 0) {
+  } else if (grid[2] === grid[5] && grid[2] === grid[8] && grid[2] !== 0) {
     winner = 3 - currentPlayer
-  }
-  if (grid[0] === grid[4] && grid[0] === grid[8] && grid[0] !== 0) {
+  } else if (grid[0] === grid[4] && grid[0] === grid[8] && grid[0] !== 0) {
     winner = 3 - currentPlayer
-  }
-  if (grid[2] === grid[4] && grid[2] === grid[6] && grid[2] !== 0) {
+  } else if (grid[2] === grid[4] && grid[2] === grid[6] && grid[2] !== 0) {
     winner = 3 - currentPlayer
-  }
-
-  if (tilesTaken === 9 && winner === 0) {
+  } else if (tilesTaken === 9 && winner === 0) {
     winner = 3
   }
 
