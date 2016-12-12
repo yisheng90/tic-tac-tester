@@ -1,5 +1,9 @@
 # Tic-Tac-Tester.js
-This script will test the game logic of your tic tac toe game. To use it you will need to include it in your html file after you main tic-tac-toe script. You will need to declare the following functions in the global scope: 
+This script will test the game logic of your tic tac toe game. To use it you will need to include it in your html file _after_ your main tic-tac-toe script. 
+
+Do not open test-the-tester.js file. It contains one implementation of Tic Tac Toe and is just there to ensure that the tests work. Ignore it and write your own code!
+
+You will need to declare the following functions in the global scope: 
 
 ### playTurn(index)
 It should take one parameter which is a zero-based index to your grid, indicating where the current player's token should be played. 
