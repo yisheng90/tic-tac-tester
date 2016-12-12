@@ -30,7 +30,6 @@ simulateGame('P1 TL to BR Victory', [1, 0, 2, 4, 5, 8], playerTwo)
 simulateGame('P2 TR to BL Victory', [2, 1, 4, 3, 6], playerOne)
 simulateGame('P2 TR to BL Victory', [0, 2, 1, 4, 3, 6], playerTwo)
 simulateGame('Draw Game', [0, 1, 2, 3, 5, 4, 6, 8, 7], playerDraw)
-simulateGame('Draw Game', [0, 1, 2, 3, 5, 4, 6, 8, 7], playerDraw)
 
 console.log('==================================')
 console.log(testsRun + ' TESTS RUN')
@@ -72,3 +71,5 @@ function expect (expectationMessage, testFunctionResult, returnValue) {
     console.log('%c[FAIL] ' + expectationMessage + ' but it was ' + testFunctionResult, 'color: red')
   }
 }
+
+console.log(printResult(6))
