@@ -21,3 +21,12 @@ It should restart the game so it can be played again.
 It is assumed that the turns of the player will be automatically changed after an allowed move.
 
 The application will console log all the passed or failed test.
+
+## General tips
+Create a new .js file that contains your functions, and replace the `<script src="./testing-the-tester.js"></script>` tag with the path to your new file.
+
+You might want to create a few variables to store information about the current state of the game. Eg. an array to represent the tic tac toe grid (eg. `var grid = [...]`), and a variable to track who the current player is (1 or 2), etc.
+
+There is no need to, but you can, look at the code in the tic-tac-tester.js file. This file contains code that will make use of the 4 functions you define (ie. it will call these functions) and check whether they return answers that they are supposed to. In other words, it will run all your functions multiple times to check that they work. 
+
+So for example if playTurn(0) is called by the code in tic-tac-tester.js, and your grid array indicates that it was previously already clicked, then whoWon() should return 0 (because whoWon() is supposed to do that, according to the specification above). 

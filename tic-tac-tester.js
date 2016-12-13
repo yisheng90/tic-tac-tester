@@ -48,8 +48,6 @@ function simulateGame (testTitle, moves, winner) {
   expect('whoWon should return 0 at start of the game', whoWon(), 0)
 
   for (var i = 0; i < moves.length; ++i) {
-    expect('gameOver should return false at this point', isGameOver(), false)
-
     expect('gameOver should return before a valid turn', isGameOver(), false)
 
     expect('playTurn should allow move to ' + moves[i], playTurn(moves[i]), true)
@@ -72,6 +70,6 @@ function expect (expectationMessage, testFunctionResult, returnValue) {
   }
 }
 
- for (var i = 0; i < previousGame.length; i++) {
- printResult(i)
- }
+for (var i = 0; i < previousGame.length; i++) {
+  printResult(i)
+}
