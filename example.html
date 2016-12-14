@@ -3,10 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <title>Test</title>
-    <script type="text/javascript" src="./tic-tac-toe-print-result-extension.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="style.css">
 
-    <script type="text/javascript" src="./tic-tac-tester.js"></script>
 </head>
 <body>
+  <header>
+    <h1>Tic Tac Toe</h1>
+  </header>
+
+  <div class="container">
+    <aside id="player-1">
+      <div class='image-holder cross'></div>
+      <h2><span>0</span>/<span>0</span> Games</h2>
+    </aside>
+
+    <div class="board cursor-cross">
+      <div id="grid-1" class="grid"></div>
+      <div id="grid-2" class="grid"></div>
+      <div id="grid-3" class="grid"></div>
+      <div id="grid-4" class="grid"></div>
+      <div id="grid-5" class="grid"></div>
+      <div id="grid-6" class="grid"></div>
+      <div id="grid-7" class="grid"></div>
+      <div id="grid-8" class="grid"></div>
+      <div id="grid-9" class="grid"></div>
+    </div>
+
+    <aside id="player-2">
+      <h2> <span>0</span>/<span>0</span> Games</h2>
+      <div class='image-holder circle'></div>
+
+    </aside>
+  </div>
+
+  <div id="restart-game">Play Again</div>
+
+  <footer>&copy; Lee Yi Sheng</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script type="text/javascript" src="./tic-tac-toe-print-result-extension.js"></script>
+
+<script type="text/javascript" src="./tic-tac-tester.js"></script>
+<script src="main.js"></script>
+
 </body>
 </html>
