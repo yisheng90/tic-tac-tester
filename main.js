@@ -1,4 +1,4 @@
-$('#grid-1').click(function () {
+/* $('#grid-1').click(function () {
   makeMove(0)
 })
 $('#grid-2').click(function () {
@@ -25,22 +25,39 @@ $('#grid-8').click(function () {
 $('#grid-9').click(function () {
   makeMove(8)
 })
-var timeout
+*/
+var restartButton
 var flash
+
+$('.grid').click(function (event) {
+  var element
+  var el
+//  for (var i = 0; i < 9; i++) {
+  element = event.target.id
+  el = element[element.length - 1]
+  console.log('el', el)
+  makeMove(el)
+  // }
+}
+)
 
 function makeMove (gridLocation) {
   console.log('current player from make move', currentPlayer)
-  var gridNumber = '#grid-' + (gridLocation + 1)
+  var gridNumber = '#grid-' + (gridLocation)
   if (isGameOver() === false && grid[gridLocation] === null) {
     if (currentPlayer === 1) {
       $('.board').toggleClass('cursor-circle')
       .removeClass('cursor-cross')
       $(gridNumber).addClass('cross')
+      $('#msgbox').css({'opacity': '1', 'z-index': '1'})
+      .text("Player O's turn")
     } else if (currentPlayer === 2) {
  // assumed player 2
       $('.board').addClass('cursor-cross')
       .removeClass('cursor-circle')
       $(gridNumber).addClass('circle')
+      $('#msgbox').css({'opacity': '1', 'z-index': '1'})
+      .text("Player X's turn")
     }
 
     console.log('Grid location is', gridLocation)
@@ -48,18 +65,31 @@ function makeMove (gridLocation) {
     if (whoWon() > 0) {
       pushToHistory()
       showRestart()
+      updateScore()
     }
+
+    flash = setTimeout(function () {
+      $('#msgbox').removeAttr('style')
+    }, 500)
   }
   console.log('makeMove was fired', gridLocation)
   console.log('This is the end of makemove', grid)
 }
 
 function showRestart () {
-  updateScore()
   $('.board').removeClass('cursor-cross')
   .removeClass('cursor-circle')
-.addClass('blur')
-  timeout = setInterval(function () {
+  .addClass('blur')
+
+  if (whoWon() === 1) {
+    $('#msgbox').text('Player X Won.')
+  } else if (whoWon() === 2) {
+    $('#msgbox').text('Player O Won.')
+  } else if (whoWon() === 3) {
+    $('#msgbox').text("It's a Draw.")
+  }
+  restartButton = setInterval(function () {
+    $('#msgbox').css({'opacity': '1', 'z-index': '1'})
     $('#restart-game').css({'opacity': '1', 'z-index': '1'})
   .animate({left: '+=10px'})
   .animate({left: '-=10px'})
@@ -74,12 +104,12 @@ function updateScore () {
 }
 
 $('#restart-game').click(function () {
+  clearInterval(restartButton)
   restart()
-  clearInterval(timeout)
-  console.log('aftertimeout', whoWon())
   $(this).removeAttr('style')
   $('.grid').removeClass('circle')
   .removeClass('cross')
   $('.board').addClass('cursor-cross')
   .removeClass('blur')
+  $('#msgbox').removeAttr('style')
 })

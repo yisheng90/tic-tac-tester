@@ -3,11 +3,17 @@ body {
 }
 
 header {
+  display: inline;
   text-align: center;
   font-family: 'Dosis', sans-serif;
   color:white;
   font-weight: bolder;
   font-size: 30px;
+}
+
+img {
+  width: 50px;
+  padding-right: 2%;
 }
 
 .grid {
@@ -17,26 +23,26 @@ header {
   width: calc(95%/3);
 }
 
-#grid-1,
-#grid-2 {
+#grid-0,
+#grid-1 {
   border-bottom: 2px solid white;
   border-right: 2px solid white;
 }
 
-#grid-7,
-#grid-8 {
+#grid-6,
+#grid-7 {
   border-top: 2px solid white;
   border-right: 2px solid white;
 }
-#grid-3 {
+#grid-2 {
   border-bottom: 2px solid white;
 }
-#grid-5 {
+#grid-4 {
   border-left: 2px solid white;
   border-right: 2px solid white;
 }
 
-#grid-9 {
+#grid-8 {
   border-top:2px solid white;
 }
 
@@ -64,8 +70,8 @@ aside {
 .image-holder {
   padding:0;
   margin: 0;
-  width: 20%;
-  height: 20%;
+  width: 80px;
+  height: 80px;
 }
 
 #player-2 {
@@ -127,4 +133,21 @@ footer {
 
 .blur {
   opacity: 0.3;
+}
+
+#msgbox {
+  position:absolute;
+  width: 20%;
+  height: 10%;
+  background-color: white;
+  top: 20%;
+  left: 40%;
+  text-align: center;
+  font-family: 'Dosis', sans-serif;
+  opacity: 0;
+  z-index: -1;
+  line-height: 50px;
+  font-size: 20px;
+  font-weight: bold;
+  border: 1px dashed grey;
 }
