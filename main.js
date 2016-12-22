@@ -35,14 +35,12 @@ $('.grid').click(function (event) {
 //  for (var i = 0; i < 9; i++) {
   element = event.target.id
   el = element[element.length - 1]
-  console.log('el', el)
   makeMove(el)
   // }
 }
 )
 
 function makeMove (gridLocation) {
-  console.log('current player from make move', currentPlayer)
   var gridNumber = '#grid-' + (gridLocation)
   if (isGameOver() === false && grid[gridLocation] === null) {
     if (currentPlayer === 1) {
@@ -60,7 +58,6 @@ function makeMove (gridLocation) {
       .text("Player X's turn")
     }
 
-    console.log('Grid location is', gridLocation)
     playTurn(gridLocation)
     if (whoWon() > 0) {
       pushToHistory()
@@ -72,8 +69,6 @@ function makeMove (gridLocation) {
       $('#msgbox').removeAttr('style')
     }, 500)
   }
-  console.log('makeMove was fired', gridLocation)
-  console.log('This is the end of makemove', grid)
 }
 
 function showRestart () {
